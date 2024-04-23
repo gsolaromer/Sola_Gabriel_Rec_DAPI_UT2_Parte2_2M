@@ -1,19 +1,35 @@
 import csv
 
+ruta = "C:\\Users\\gabri\\Escritorio\\GIT_gsolaromerEduca\\Sola_Gabriel_Rec_DAPI_UT2_Parte2_2M\\class.csv"
 
-def process_class(ruta):
-   """
-   Lee los datos y los almacena en una lista de diccionarios donde en cada uno
-   de los alumnos las claves serán los datos de la cabecera del archivo CSV
-   y los valores serán los datos de cada alumno/a.
-   :param ruta: un str con la ruta del fichero (.csv) a abrir.
-   :return: None
-   """
-   alumnado = []
-   with open(ruta, newline='', encoding="UTF-8") as csvfile:
+def create_email(ruta):
+    '''Función que recibe el nombre y apellido de cada alumno 
+    y devuelve una dirección de correo en el dominio de Educación Navarra.
+    
+    Parámetros:
+        - Ruta del archivo CSV que contiene los nombres y apellidos de los alumnos
+    
+    Salida:
+        - Lista de direcciones de correo en el dominio de Educación Navarra'''
+    
+    correos = []
+    with open(ruta, newline='', encoding="UTF-8") as csvfile:
        reader = csv.DictReader(csvfile)
        for fila in reader:
-           alumnado.append(fila)
-   return
+           nombre = fila['Nombre']
 
-process_class("class.csv")
+           apellido = fila['Apellido']
+
+           primera_letra_nombre = nombre[0].lower()
+
+           cinco_letras_apellido = apellido[:5].lower()
+
+           correo = primera_letra_nombre + cinco_letras_apellido + "@educacion.navarra.es"
+
+           correos.append(correo)
+
+    return correos
+
+lista_correos = create_email(ruta)
+
+print(lista_correos)
