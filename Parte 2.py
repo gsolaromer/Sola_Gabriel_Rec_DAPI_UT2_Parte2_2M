@@ -3,8 +3,9 @@ import csv
 ruta = "C:\\Users\\gabri\\Escritorio\\GIT_gsolaromerEduca\\Sola_Gabriel_Rec_DAPI_UT2_Parte2_2M\\class.csv"
 
 def create_email(ruta):
-    '''Función que recibe el nombre y apellido de cada alumno 
-    y devuelve una dirección de correo en el dominio de Educación Navarra.
+    '''Escribir una función que a partir de los datos almacenados 
+    en la función proccess_class() de la Parte 1 cree un correo electrónico 
+    para cada alumno/a en función de su nombre y apellido.
     
     Parámetros:
         - Ruta del archivo CSV que contiene los nombres y apellidos de los alumnos
